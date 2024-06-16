@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: An AWS Serverless Application Model template describing your function.
+Resources:
+  graphQLHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Description: The GraphQL Endpoint.
+      MemorySize: 128
+      Timeout: 100
+      Handler: dist/src/graphql.graphqlHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      EphemeralStorage:
+        Size: 512
+      EventInvokeConfig:
+        MaximumEventAgeInSeconds: 21600
+        MaximumRetryAttempts: 2
+      PackageType: Zip
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - logs:CreateLogGroup
+                - logs:CreateLogStream
+                - logs:PutLogEvents
+              Resource: '*'
+        - SecretsManagerReadWrite
+      SnapStart:
+        ApplyOn: None
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /graphQL
+            Method: ANY
+      RuntimeManagementConfig:
+        UpdateRuntimeOn: Auto

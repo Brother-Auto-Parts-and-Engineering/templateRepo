@@ -1,0 +1,6 @@
+node_modules
+coverage
+.aws-sam
+.serverless
+dist
+.env

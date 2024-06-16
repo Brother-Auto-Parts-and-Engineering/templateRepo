@@ -1,0 +1,21 @@
+{
+  "name": "NAME_HERE",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "pnpm --filter=frontend dev",
+    "codegen": "pnpm --filter=frontend codegen",
+    "backend": "pnpm --filter=backend start",
+    "model" : "pnpm --filter=backend model"
+
+    
+  },
+  "dependencies": {
+    "backend": "workspace:backend",
+    "frontend": "workspace:frontend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
