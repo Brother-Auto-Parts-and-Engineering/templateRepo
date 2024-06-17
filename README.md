@@ -16,8 +16,14 @@ We use `pnpm`, not `npm`. Please make sure there are no `package-lock.json` floa
 1. Update package.json with the `name` of your project
 1. Run `pnpm i` from root, which should install all dependencies
 1. Once you have established your secret manager, fill in the `YOUR-SECRET-ID` value in `modelUtilities.ts`
-1. Once an SQL Server for the project has been established, update `model` script in `backend/package.json` with the necessary parameters
-1. run `pnpm model` to pull the schema of the database into the backend folder
+1. Create a `.env` file that define the following parameters : 
+```
+    DBHOST
+    DATABASE
+    DBUSER
+    DBPASS
+```  
+5. run `pnpm model` to pull the schema of the database into the backend folder
 1. Run `pnpm backend` to start backend server. Verify that backend is running correctly
 1. While the backend server is running, run `pnpm codegen` to update typeDefs from backend to frontend for type sharing.
 1. Run `pnpm frontend` to start frontend server.
