@@ -1,8 +1,9 @@
 export const exampleTypeDef = `#graphql
   type Example {
-    id: ID!
-    name: String!
-    age: Int!
+    id: String!
+    username: String!
+    firstname: String!
+    lastname: String!
   }
 
   type Query {
