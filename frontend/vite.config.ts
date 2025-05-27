@@ -1,4 +1,3 @@
-
 /// <reference types="vitest" />
 import react from '@vitejs/plugin-react-swc'
 import path, { resolve } from 'path'
@@ -10,7 +9,17 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
-    setupFiles: './testsetup.ts',
+    // setupFiles: './testsetup.ts',
+    browser: {
+      provider: 'playwright', // or 'webdriverio'
+      enabled: true,
+      name: 'chromium' // browser name is required
+    },
+    coverage: {
+      provider: 'istanbul', // or 'v8'
+      reporter: ['text', 'text-summary'], // Avoid unnecessary outputs
+      include: ['**/**/*.tsx']
+    }
   },
   resolve: {
     alias: [
